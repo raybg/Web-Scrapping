@@ -1,0 +1,11 @@
+# This code to be used in case the website is throwing HTTPError: HTTP Error 403
+
+
+from urllib.request import urlopen, Request
+
+from urllib.request import urlopen, Request
+headers = {'User-Agent': 'Chrome/79.0.3945.130'}
+reg_url = "https://economictimes.indiatimes.com/markets/live-coverage"
+req = Request(url=reg_url, headers=headers) 
+html = urlopen(req).read() 
+html
