@@ -1,0 +1,33 @@
+from selenium import webdriver
+from bs4 import BeautifulSoup as bs
+import csv
+import pandas as pd
+from urllib.request import urlopen as uReq
+
+
+url = 'https://www.91mobiles.com/mobile-price-list-in-india'
+
+uClient = uReq(url)
+page_html = uClient.read()
+
+page_soup = bs(page_html,'html.parser')
+
+page_soup 
+
+
+
+chrome_path = r"C:\Users\BG\Downloads\chromedriver_win32\chromedriver.exe"
+driver = webdriver.Chrome(chrome_path)
+
+driver.get ("https://www.91mobiles.com/mobile-price-list-in-india")
+
+
+
+mname = driver.find_elements_by_xpath('''//*[@id="finderResults"]/div[4]/div[1]/div[2]/div[1]/div/span/h3/a''')
+mprice = driver.find_elements_by_xpath('''//*[@id="finderResults"]/div[4]/div[1]/div[2]/div[2]/div/span''')
+
+for post in mname:
+    print(mname.text)
+    
+    
+    
