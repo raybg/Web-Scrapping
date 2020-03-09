@@ -1,0 +1,48 @@
+from selenium import webdriver
+from bs4 import BeautifulSoup as bs
+import csv
+import pandas as pd
+from urllib.request import urlopen as uReq
+
+url = 'https://www.waikato.ac.nz/staff-profiles/a-z'
+
+uClient = uReq(url)
+page_html = uClient.read()
+
+page_soup = bs(page_html,'html.parser')
+
+
+chrome_path = r"C:\Users\g.bhargavi\Downloads\Python Testing\Python Udemy\Web Scrapping\chromedriver_win32\chromedriver.exe"
+driver = webdriver.Chrome(chrome_path)
+driver.get(url)
+# print the first 500 characters of the HTML
+#print(r.text[0:500])
+
+content = driver.page_source
+soup = bs(content)
+
+#table = soup.findAll('section',attrs={'id':'content'})
+table = soup.find('section')
+                      
+                      #:'content'})
+
+len(table)  #table[0:5] #table [-1]
+
+
+for a in table:
+    pname=a.find_all('p')
+   # child=a.find('div',attrs={'class':'filter-grey-bar filter_gray_bar_margin'})
+   # for li in child.findAll('li'):
+    print(pname.text)
+    
+    
+
+all_links = soup.find_all('a', href=True)
+all_links
+
+
+df = pd.DataFrame(mname) 
+df
+
+#{'Mobile Name':mobname,'Mobile Price':mobprice}
+#df.to_csv('products.csv', index=False, encoding='utf-8')
