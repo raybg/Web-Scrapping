@@ -15,12 +15,22 @@ page_soup = bs(page_html,'html.parser')
 page_soup 
 
 
+content = driver.page_source
+soup1 = bs(content)
+
 
 chrome_path = r"C:\Users\BG\Downloads\chromedriver_win32\chromedriver.exe"
 driver = webdriver.Chrome(chrome_path)
+driver.get ("https://www.91mobiles.com/mobile-price-list-in-india")     OR (url)
+# print the first 500 characters of the HTML
+#print(r.text[0:500])
 
-driver.get ("https://www.91mobiles.com/mobile-price-list-in-india")
 
+table = soup.find('section',attrs={'id':'content'})
+table = soup.find('p')
+
+
+list(soup.children)
 
 
 mname = driver.find_elements_by_xpath('''//*[@id="finderResults"]/div[4]/div[1]/div[2]/div[1]/div/span/h3/a''')
@@ -28,6 +38,10 @@ mprice = driver.find_elements_by_xpath('''//*[@id="finderResults"]/div[4]/div[1]
 
 for post in mname:
     print(mname.text)
-    
-    
+ 
+ 
+ #len(table)  #table[0:5] #table [-1]
+
+#urlchild = soup.find('a','href')
+
     
